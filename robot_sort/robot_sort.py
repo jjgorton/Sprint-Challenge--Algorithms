@@ -99,19 +99,63 @@ class SortingRobot:
         Sort the robot's list.
         """
         # essentially a bubble sort:
-        # (0) start by tunring light on
-        # (1) grab item at start position - IF light is on - else turn return list
-        # (2) move to the right by one if able (not at the end of the list)
-        # else:
-        # move right to the beginning of the list
-        # turn light off
-        # start at (1)
-        # (3) compare: if held item is greater:
-        # swap item
-        # turn light on
-        # move to the left one and swap with None
-        # move left back to beginnin and start at 1
-        # else start back at (2)
+
+        # swap = 1
+        self.set_light_on()
+
+        # while swap > 0:
+        while self.light_is_on():
+            if self.can_move_left():
+                self.move_left()
+
+            # swap = 0
+            self.set_light_off()
+
+            # for i in range(0, len(arr)-1):
+            while not self.light_is_on():
+
+                # if arr[i] > arr[i+1]:
+                self.swap_item()
+                if self.can_move_right():
+                    self.move_right()
+                    if self.compare_item() > 0:
+                        # arr[i+1], arr[i] = arr[i], arr[i+1]
+                        self.swap_item()
+                    # swap += 1
+                        self.set_light_on()
+                    else:
+
+        return 'Done'
+
+    # # (0) start by tunring light on
+    # set_light_on()
+
+    # # (1) grab item at start position - IF light is on - else turn return list
+    # for i in range(len(l)):
+    #     if light_is_on():
+    #         swap_item()
+    #     else:
+    #         return 'Done'
+
+    #     # (2) move to the right by one if able (not at the end of the list)
+    #     if can_move_right():
+    #         move_right()
+
+    #     else:
+    #     # move right to the beginning of the list
+    #         while can_move_left():
+    #             move_left()
+    #     # turn light off
+    #         set_light_off()
+    #     # start at (1)
+    #         continue
+    # # (3) compare: if held item is greater:
+
+    # # swap item
+    # # turn light on
+    # # move to the left one and swap with None
+    # # move left back to beginnin and start at 1
+    # # else start back at (2)
 
 
 if __name__ == "__main__":
