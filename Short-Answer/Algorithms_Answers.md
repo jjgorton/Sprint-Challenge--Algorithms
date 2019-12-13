@@ -18,3 +18,25 @@ Linear O(n)
 The recursive loop is running once for each input (bunnies - 1). Which makes it grow in direct proportion it's input, thus O(n).
 
 ## Exercise II
+
+This is a binary search algorithm. This works since, by definition, the "floors" are already sorted lowest to highest.
+
+The Big O is Logarithmic - O(log n)
+
+```
+function(n = floors, f = lowest floor that egg breaks)
+
+lowest_floor = 0
+highest_floor = n # number of floors given to us
+
+middle = (highest_floor - lowest_floor) // 2 #splitting in half with int div. (finding the middle)
+
+if middle == f: # egg doesn't break below this point
+return middle # this is the answer!
+
+elif middle < f: # egg doesn't break
+return function(n[:middle]) #recursive call to check the bottom half of floors using a slice
+
+else:
+return function(n[middle:]) #recursice call to check the top half of floors using a slice
+```
